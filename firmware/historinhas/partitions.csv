@@ -1,0 +1,8 @@
+# 16 MiB flash. The application gets 1.5 MiB because Historinhas' 32k-token
+# UTF-8 decode table is compiled into its .rodata. `model` occupies the rest
+# before the fixed 64 KiB coredump area; tools must read its offset from here.
+# Name,    Type, SubType, Offset,    Size,      Flags
+nvs,       data, nvs,     0x9000,    0x5000,
+factory,   app,  factory, 0x10000,   0x180000,
+model,     data, 0x40,    0x190000,  0xE60000,
+coredump,  data, coredump,0xFF0000,  0x10000,
